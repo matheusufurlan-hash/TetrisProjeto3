@@ -35,6 +35,7 @@ public class Tabuleiro {
         int novaPosX = posx;
         int novaPosY = posy;
         for(int linha = 0; linha < linhas; linha++){
+            
             for(int coluna = 0; coluna < colunas; coluna++){
                 novaPosY = posy + coluna*LARGURA_BLOCO;
                 novaPosX = posx + linha*ALTURA_BLOCO;
@@ -42,8 +43,8 @@ public class Tabuleiro {
                 
                 if(gradeDeCores[linha][coluna] != null){
                     
-                    engine.fillRectangle(novaPosX, novaPosY, LARGURA_BLOCO, ALTURA_BLOCO, colorFill);
-                    
+                    engine.fillRectangle(novaPosX, novaPosY, LARGURA_BLOCO, ALTURA_BLOCO, gradeDeCores[linha][coluna]);
+                    engine.drawRectangle(novaPosX, novaPosY, LARGURA_BLOCO, ALTURA_BLOCO, colorContorno);
                     
                     
                     
@@ -64,9 +65,9 @@ public class Tabuleiro {
             System.out.println("tchau");
         }
     }
-    void ocupar(int linhas, int colunas, Color cor){
+    void ocupar(int linha, int coluna, Color cor){
         
-        gradeDeCores[linhas][colunas] = cor;
+        gradeDeCores[linha][coluna] = cor;
         
     }
     
