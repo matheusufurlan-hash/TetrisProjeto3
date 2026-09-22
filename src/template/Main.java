@@ -54,11 +54,12 @@ public class Main extends EngineFrame {
         tabuleiro.ocupar(9, 8, GOLD);
         tabuleiro.ocupar(3, 5, GOLD);
         tabuleiro.ocupar(2, 19, GOLD);
-        for(int linha = 0; linha < linhasTabuleiro; linha++){
-            for(int coluna = 0; coluna< colunasTabuleiro; coluna++){
-                tabuleiro.estaPreenchido(linha, coluna);
-            }
-        }
+        tabuleiro.estaPreenchido(9, 8);
+        tabuleiro.estaPreenchido(3, 5);
+        tabuleiro.estaPreenchido(2, 19);
+        tabuleiro.estaPreenchido(25, 30);
+        tabuleiro.estaPreenchido(-1, -1);
+        
     }
 
     /**

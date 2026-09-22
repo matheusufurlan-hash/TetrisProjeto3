@@ -46,24 +46,29 @@ public class Tabuleiro {
                     engine.fillRectangle(novaPosX, novaPosY, LARGURA_BLOCO, ALTURA_BLOCO, gradeDeCores[linha][coluna]);
                     engine.drawRectangle(novaPosX, novaPosY, LARGURA_BLOCO, ALTURA_BLOCO, colorContorno);
                     
-                    
-                    
-                }
-                
-                
-               
-            }
-            
-            
-          
+                      
+                }             
+            }          
         }
     }
-    void estaPreenchido(int linhas, int colunas){
-        if(gradeDeCores[linhas][colunas] == null){
-            System.out.println("oi");
-        }else{
-            System.out.println("tchau");
+    boolean estaPreenchido(int linha, int coluna){
+        if((linha < linhas && linha > 0) || (coluna < colunas && coluna > 0)){
+           if(gradeDeCores[linha][coluna] != null){
+               System.out.printf("Esta preenchido linha %d na coluna %d\n", linha, coluna);
+              return true;
+           }
         }
+        if(linha > linhas || coluna > colunas){
+            System.out.println("Peca fora da grade");
+        }
+        else if(linha < 0 || coluna < 0){
+            System.out.println("Peca vazia");
+        }
+        else{
+            System.out.println("Nao esta preenchido");
+            
+        }
+        return false;
     }
     void ocupar(int linha, int coluna, Color cor){
         
@@ -75,6 +80,4 @@ public class Tabuleiro {
 
 
 
-/*TODO fazer com que eu consigo me comunicar com a classe principal la no main no sentido de que
-eh necessario eu saber a posicao da matriz se esta ou nao ocupada no metodo estaPreenchido */
-//TODO Refazer estaPreenchido: recebe linha e coluna, sem laço, checa limites primeiro, retorna boolean
+
