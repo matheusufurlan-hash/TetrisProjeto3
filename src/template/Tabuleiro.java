@@ -3,7 +3,6 @@
 package template;
 
 import br.com.davidbuzatto.jsge.core.engine.EngineFrame;
-import static br.com.davidbuzatto.jsge.core.engine.EngineFrame.KEY_SPACE;
 import java.awt.Color;
 
 public class Tabuleiro {
@@ -12,7 +11,6 @@ public class Tabuleiro {
     private int posx;
     private int posy;
     private Color colorContorno;
-    private Color colorFill;
     private Color[][] gradeDeCores;
     private static final int ALTURA_BLOCO = 20;
     private static final int LARGURA_BLOCO = 20;

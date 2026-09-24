@@ -1,9 +1,7 @@
 package template;
 
 import br.com.davidbuzatto.jsge.core.engine.EngineFrame;
-import br.com.davidbuzatto.jsge.math.Vector2;
 import java.awt.Color;
-import java.util.HashSet;
 
 
 /**
@@ -17,9 +15,9 @@ public class Main extends EngineFrame {
     private static final int POSX = 20;
     private static final int POSY = 20;
     
-    private int linhasTabuleiro = 20;
-    private int colunasTabuleiro = 10;
+    
     private Tabuleiro tabuleiro;
+    private Peca peca;
     private Color[][] cores;
     
     
@@ -51,14 +49,12 @@ public class Main extends EngineFrame {
     @Override
     public void create() {
         tabuleiro = new Tabuleiro(10, 20, POSX, POSY, BLACK); 
-        tabuleiro.ocupar(9, 8, GOLD);
-        tabuleiro.ocupar(3, 5, GOLD);
-        tabuleiro.ocupar(2, 19, GOLD);
-        tabuleiro.estaPreenchido(9, 8);
-        tabuleiro.estaPreenchido(3, 5);
-        tabuleiro.estaPreenchido(2, 19);
-        tabuleiro.estaPreenchido(25, 30);
-        tabuleiro.estaPreenchido(-1, -1);
+        
+        tabuleiro.ocupar(1, 2, GOLD);
+        peca = new Peca(1, 1, POSX, POSY, GOLD, BLACK, tabuleiro);
+        
+        
+        
         
     }
 
@@ -76,7 +72,7 @@ public class Main extends EngineFrame {
      */
     @Override
     public void update( double delta ) {  
-        
+        peca.update(delta);
     }
     
     /**
@@ -89,6 +85,7 @@ public class Main extends EngineFrame {
     @Override
     public void draw() {
       tabuleiro.draw(this);
+      peca.drawPeca(1, 1, this);
       
     }
     
