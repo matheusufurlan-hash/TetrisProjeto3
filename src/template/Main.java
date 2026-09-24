@@ -12,9 +12,10 @@ import java.awt.Color;
  * @author Prof. Dr. David Buzatto
  */
 public class Main extends EngineFrame {
-    private static final int POSX = 20;
-    private static final int POSY = 20;
-    
+    private static final int POS_PIXEL_X = 20;
+    private static final int POS_PIXEL_Y = 20;
+    private static final int LINHAS_TABULEIRO = 20;
+    private static final int COLUNAS_TABULEIRO = 10;
     
     private Tabuleiro tabuleiro;
     private Peca peca;
@@ -48,10 +49,9 @@ public class Main extends EngineFrame {
      */
     @Override
     public void create() {
-        tabuleiro = new Tabuleiro(10, 20, POSX, POSY, BLACK); 
+        tabuleiro = new Tabuleiro(20, 10, POS_PIXEL_X, POS_PIXEL_Y, BLACK); 
         
-        tabuleiro.ocupar(1, 2, GOLD);
-        peca = new Peca(1, 1, POSX, POSY, GOLD, BLACK, tabuleiro);
+        peca = new Peca(1, 1, POS_PIXEL_X, POS_PIXEL_Y, GOLD, BLACK, tabuleiro);
         
         
         
@@ -85,7 +85,7 @@ public class Main extends EngineFrame {
     @Override
     public void draw() {
       tabuleiro.draw(this);
-      peca.drawPeca(1, 1, this);
+      peca.drawPeca(this);
       
     }
     

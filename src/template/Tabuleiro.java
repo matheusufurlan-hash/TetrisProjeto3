@@ -28,6 +28,23 @@ public class Tabuleiro {
         
     }
 
+    public int getLinhas() {
+        return linhas;
+    }
+
+    public int getColunas() {
+        return colunas;
+    }
+
+    public int getPosx() {
+        return posx;
+    }
+
+    public int getPosy() {
+        return posy;
+    }
+    
+
     
     void draw(EngineFrame engine){
         int novaPosX = posx;
@@ -37,12 +54,12 @@ public class Tabuleiro {
             for(int coluna = 0; coluna < colunas; coluna++){
                 novaPosY = posy + coluna*LARGURA_BLOCO;
                 novaPosX = posx + linha*ALTURA_BLOCO;
-                engine.drawRectangle(novaPosX, novaPosY, LARGURA_BLOCO, ALTURA_BLOCO, colorContorno);
+                engine.drawRectangle(novaPosY, novaPosX, LARGURA_BLOCO, ALTURA_BLOCO, colorContorno);
                 
                 if(gradeDeCores[linha][coluna] != null){
                     
-                    engine.fillRectangle(novaPosX, novaPosY, LARGURA_BLOCO, ALTURA_BLOCO, gradeDeCores[linha][coluna]);
-                    engine.drawRectangle(novaPosX, novaPosY, LARGURA_BLOCO, ALTURA_BLOCO, colorContorno);
+                    engine.fillRectangle(novaPosY, novaPosX, LARGURA_BLOCO, ALTURA_BLOCO, gradeDeCores[linha][coluna]);
+                    engine.drawRectangle(novaPosY, novaPosX, LARGURA_BLOCO, ALTURA_BLOCO, colorContorno);
                     
                       
                 }             
@@ -50,23 +67,13 @@ public class Tabuleiro {
         }
     }
     boolean estaPreenchido(int linha, int coluna){
-        if((linha < linhas && linha > 0) || (coluna < colunas && coluna > 0)){
-           if(gradeDeCores[linha][coluna] != null){
-               System.out.printf("Esta preenchido linha %d na coluna %d\n", linha, coluna);
-              return true;
-           }
-        }
-        if(linha > linhas || coluna > colunas){
+        
+        if((linha >= linhas || linha < 0) || (coluna >= colunas || coluna < 0)){
             System.out.println("Peca fora da grade");
+            return true;
         }
-        else if(linha < 0 || coluna < 0){
-            System.out.println("Peca vazia");
-        }
-        else{
-            System.out.println("Nao esta preenchido");
-            
-        }
-        return false;
+        return gradeDeCores[linha][coluna] != null;
+        
     }
     void ocupar(int linha, int coluna, Color cor){
         
